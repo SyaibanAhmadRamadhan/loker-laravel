@@ -1,24 +1,32 @@
 <style>
-    .filepond--drop-label {
-        color: #4c4e53;
+    .upload-btn-wrapper {
+        position: relative;
+        overflow: hidden;
+        display: inline-block;
+        /* justify-content: center; */
+        align-items: center;
+        padding-bottom: 20px
     }
 
-    .filepond--label-action {
-        text-decoration-color: #babdc0;
+    .btnUpload {
+        border: 2px solid gray;
+        color: gray;
+        background-color: white;
+        padding: 8px 30px;
+        border-radius: 8px;
+        font-size: 20px;
+
+        font-weight: bold;
+
     }
 
-    .filepond--panel-root {
-        border-radius: 2em;
-        background-color: #edf0f4;
-        height: 1em;
-    }
-
-    .filepond--item-panel {
-        background-color: #595e68;
-    }
-
-    .filepond--drip-blob {
-        background-color: #7f8a9a;
+    .upload-btn-wrapper input[type=file] {
+        font-size: 100px;
+        position: absolute;
+        /* justify-content: center; */
+        left: 0;
+        top: 0;
+        opacity: 0;
     }
 
 </style>
@@ -92,20 +100,25 @@
                                             </p>
                                         </div> --}}
                                         <div class="example">
-                                            <div class="row">
-                                                <div class="col-md-4">
-                                                    <input class="multi" style="float:left;" name='document[]' data-maxsize="3024" accept="doc|docx|pdf|.rtf|.txt" type="file" id="T7" /><br><br>
-                                                    <div requred id="T7-list" style="border:#999 solid 3px; padding:20px; ">
-                                                        Upload Your File
-                                                        <br />
-                                                        <br />
-                                                    </div>
-                                                </div>
+                                            <div class="upload-btn-wrapper">
+                                                <button class="btnUpload" style="cursor: pointer;">Upload a file</button>
 
-                                                <p style="clear:both; padding-top:30px">
-                                                    <button type="submit" id="submit" class="btn btn-primary">Submit</button>
-                                                </p>
+                                                {{-- <input type="file" name="myfile" /> --}}
+                                                <input class="multi custom-file-input" name='document[]' accept="doc|docx|pdf|.rtf|.txt" data-maxsize="5120" data-maxfile="2048" type="file" id="T7" />
+
+
                                             </div>
+                                            <div requred id="T7-list" style="border:#999 solid 3px; padding:15px; padding-bottom:50px">
+                                                <p>Upload Your File</p>
+
+                                                <br />
+                                                <br />
+                                            </div>
+                                            <p style="text-align: left">*max size 2MB / 2048KB</p>
+
+                                            <p style="clear:both; padding-top:30px">
+                                                <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
