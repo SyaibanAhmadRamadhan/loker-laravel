@@ -55,6 +55,11 @@
 
                     <td>{{ auth()->user()->tamatan_pendidikan }}</td>
                 </tr>
+                <tr>
+                    <td>Keahlian</td>
+
+                    <td>{{ auth()->user()->keahlian }}</td>
+                </tr>
             </table>
         </div>
     </div>
