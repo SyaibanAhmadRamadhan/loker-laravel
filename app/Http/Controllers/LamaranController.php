@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Lamaran;
-use App\Models\Lowongan;
-use App\Models\Perusahaan;
 use App\Models\User;
 use Illuminate\Http\Request;
 use File;
@@ -55,19 +53,12 @@ class LamaranController extends Controller
         $lamaran->status_lamaran = "lamar";
         $lamaran->tgl_interview = "";
         // $array = [];
-        $mkdir = date("Y-m-d H:i:s");
-        $storage = Storage::makeDirectory('storage/document/'.$mkdir);
-        // dd($request->file('document'));
+        $mkdir = auth()->user()->id.'-'.$request->id_lowongan_kerja.'-'.date("Y-m-d");
+        Storage::makeDirectory('public/document/'.$mkdir);
         foreach ($request->file('document') as $x) {
             $originalname = $x->getClientOriginalName();
-            // dd($originalname);
-            // $extension = $x->extension();
-            // $name = $x.'.'.$extension;
-            $x->move('storage/document/'.$mkdir,$originalname);
-            // $array[] = $name;
+            $x->storeAs('public/document/'.$mkdir ,$originalname);
         }
-
-        // $d = json_encode($array);
         $lamaran->document = $mkdir;
         $lamaran->save();
         return redirect('/lamaran')->with('success', "Anda berhasil melamar");
