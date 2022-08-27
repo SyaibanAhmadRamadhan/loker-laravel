@@ -15,7 +15,7 @@ class AdminController extends Controller
         }
 
         return view("admin.index");
-        
+
     }
 
     public function login(){
@@ -43,6 +43,9 @@ class AdminController extends Controller
     }
 
     public function users(){
+        if(!auth()->check()){
+            return redirect("/admin/login");
+        }
         return view("admin.users.index", [
             "users" => User::where("is_admin", 0)->get(),
         ]);

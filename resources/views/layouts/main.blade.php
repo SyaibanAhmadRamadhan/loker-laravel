@@ -116,7 +116,6 @@
     </script>
 
     {{-- validasi --}}
-    {{-- validasi --}}
     <script src="/validation/jquery.validate.min.js"></script>
     <script src="/validation/validate-register.js"></script>
     <script src="/validation/validate-login.js"></script>
@@ -143,12 +142,50 @@
         });
 
     </script>
+    <script type="text/javascript">
+        $("body").on("click", "#btnSubmitProfile", function() {
+            var allowedFiles = [".png", ".jpg", ".jpeg"];
+            var fileUpload = $("#foto1");
+            var lblError = $("#err");
+
+            var regex = new RegExp("([a-zA-Z0-9\s_\\.\-:])+(" + allowedFiles.join('|') + ")$");
+            let file = document.getElementById("foto1").files[0];
+            console.log(file.size);
+            if (file.size > 2097152) {
+                lblError.html("file terlalu besar, max file 2mb");
+                return false;
+            }
+            if (fileUpload.val().toLowerCase()) {
+                if (!regex.test(fileUpload.val().toLowerCase())) {
+                    lblError.html("Gunakan Extension: <b>" + allowedFiles.join(' ') + "</b> only.");
+                    console.log(fileUpload.val());
+                    return false;
+                }
+                lblError.html('');
+                return true;
+            }
+        });
+
+    </script>
+
+
 
 
     <script>
         function previewImage() {
             const image = document.querySelector('#foto');
             const imageShow = document.querySelector('.img-show');
+            imageShow.style.display = 'block';
+            const oFReader = new FileReader();
+            oFReader.readAsDataURL(image.files[0]);
+            oFReader.onload = function(oFREvent) {
+                imageShow.src = oFREvent.target.result;
+            }
+        }
+
+        function previewImage1() {
+            const image = document.querySelector('#foto1');
+            const imageShow = document.querySelector('.img-show1');
             imageShow.style.display = 'block';
             const oFReader = new FileReader();
             oFReader.readAsDataURL(image.files[0]);
@@ -172,8 +209,6 @@
     <script>
         $(document).ready(function() {
             $('#submit').click(function() {
-
-                // let file_val = $('#T7-list');
                 let file_val = $('.MultiFile-label').length;
                 console.log(file_val);
                 if (file_val <= 0) {

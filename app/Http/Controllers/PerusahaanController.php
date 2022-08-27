@@ -111,6 +111,7 @@ class PerusahaanController extends Controller
             return redirect("/perusahaan/login");
         }
 
+
         return view("perusahaan.index");
     }
 
@@ -146,6 +147,9 @@ class PerusahaanController extends Controller
     }
 
     public function daftarPerusahaan(Request $request){
+        if(!auth()->check()){
+            return redirect("/admin/login");
+        }
         $checkPerusahaan = Perusahaan::where("email", $request->email)->first();
 
         if($checkPerusahaan){
@@ -168,6 +172,9 @@ class PerusahaanController extends Controller
     }
 
     public function lowongan(){
+        if(!session()->has("login")){
+            return redirect("/perusahaan/login");
+        }
         return view("perusahaan.lowongan.index", [
             "lowongan" => Lowongan::where("id_perusahaan", session("id"))->get(),
             "kota" => Kota::all(),
@@ -197,8 +204,10 @@ class PerusahaanController extends Controller
     }
 
     public function lamaran(){
+        if(!session()->has("login")){
+            return redirect("/perusahaan/login");
+        }
         $lowongan = Lowongan::where("id_perusahaan", session("id"))->get();
-        $lamaran = [];
         foreach($lowongan as $l){
             $checkLamaran = Lamaran::where("id_lowongan_kerja", $l->id)->where("status_lamaran", "Lamar")->first();
 
@@ -213,6 +222,9 @@ class PerusahaanController extends Controller
     }
 
     public function interview(){
+        if(!session()->has("login")){
+            return redirect("/perusahaan/login");
+        }
         $lowongan = Lowongan::where("id_perusahaan", session("id"))->get();
         $interview = [];
         foreach($lowongan as $l){

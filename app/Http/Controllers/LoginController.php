@@ -16,7 +16,7 @@ class LoginController extends Controller
 
         if(Auth::attempt($user)){
             $request->session()->regenerateToken();
-            return redirect()->intended("/");
+            return redirect()->intended("/")->with('login_berhasil', "login berhasil");
         }
 
         return back()->with("error_login", "Login failed");

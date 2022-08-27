@@ -20,7 +20,14 @@ jQuery(".form-login").validate({
             required: !0,
             email: !0,
         },
+        email: {
+            required: !0,
+            email: !0,
+        },
         passwordLogin: {
+            required: !0,
+        },
+        password: {
             required: !0,
         },
     },
@@ -29,7 +36,14 @@ jQuery(".form-login").validate({
             email: "Masukan Alamat Email Dengan Benar",
             required: "Masukan Email",
         },
+        email: {
+            email: "Masukan Alamat Email Dengan Benar",
+            required: "Masukan Email",
+        },
         passwordLogin: {
+            required: "Masukan Password",
+        },
+        password: {
             required: "Masukan Password",
         },
     },

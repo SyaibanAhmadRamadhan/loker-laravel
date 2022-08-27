@@ -25,7 +25,6 @@ Route::get('/', function () {
     if(session("id")){
         return redirect("/perusahaan/dashboard");
     }
-
     return view("index");
 });
 
@@ -53,7 +52,6 @@ Route::group(['prefix' => 'perusahaan'], function () {
     Route::get('/lamaran', [PerusahaanController::class, "lamaran"]);
     Route::get('/interview', [PerusahaanController::class, "interview"]);
 });
-
 Route::get("/user/profile", function(){
     if(!auth()->check()){
         return redirect("/");
@@ -65,8 +63,10 @@ Route::get("/user/profile", function(){
 
 Route::resource("/lowongan-kerja", LowonganController::class);
 Route::resource("/lamaran", LamaranController::class);
+
 Route::get("/zip", [LamaranController::class,"zip"]);
 
 Route::post("/login", [LoginController::class, "authenticate"]);
 Route::post("/logout", [LoginController::class, "logout"]);
 Route::post("/register", [RegisterController::class, "store"]);
+Route::resource("/user", RegisterController::class);

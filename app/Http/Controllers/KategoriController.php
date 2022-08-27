@@ -15,6 +15,9 @@ class KategoriController extends Controller
      */
     public function index()
     {
+        if(!auth()->check()){
+            return redirect("/admin/login");
+        }
         return view("admin.kategori.index", [
             "kategori" => Kategori::all(),
         ]);
@@ -27,7 +30,7 @@ class KategoriController extends Controller
      */
     public function create()
     {
-       
+
     }
 
     /**
@@ -64,6 +67,9 @@ class KategoriController extends Controller
      */
     public function edit(Kategori $kategori)
     {
+        if(!auth()->check()){
+            return redirect("/admin/login");
+        }
         return view("admin.kategori.edit", [
             "kategori" => $kategori,
         ]);

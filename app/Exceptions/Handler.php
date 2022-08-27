@@ -4,6 +4,8 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+// use Illuminate\Support\Arr;
+// use Illuminate\Auth\AuthenticationException as AuthenticationException;
 
 class Handler extends ExceptionHandler
 {
