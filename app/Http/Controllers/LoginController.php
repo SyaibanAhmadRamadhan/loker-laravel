@@ -11,7 +11,8 @@ class LoginController extends Controller
     public function authenticate(Request $request){
         $user = [
             "email" => $request->emailLogin,
-            "password" => $request->passwordLogin
+            "password" => $request->passwordLogin,
+            "is_admin" => 0
         ];
 
         if(Auth::attempt($user)){
