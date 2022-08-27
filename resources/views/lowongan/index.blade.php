@@ -131,7 +131,7 @@
                                 <div class="row">
                                     <div class="form-group mb-2">
                                         <select name="jurusan" class="filter_nama" required>
-                                            <option value="">Lowongan</option>
+                                            <option value="">Kategori</option>
                                             @foreach ($kategori as $x)
                                             <option value="{{ $x->id }}" {{ request('jurusan') == $x->id ? 'selected' : '' }}>
                                                 {{ $x->nama_kategori }}</option>
@@ -173,7 +173,7 @@
         <a href="lowongan-kerja/{{ $l->id }}" class="col-sm-12 col-lg-3 col-md-4" style="padding: 0 4px;">
             <div>
                 <div class="card card-perusahaan" style="cursor: pointer;">
-                    <img src="{{ asset("storage/perusahaan/" . $l->foto) }}" class="img-responsive" style="height: 8rem; width: 16rem; object-fit:contain; padding: .30em; object-position: left;">
+                    <img src="{{ asset("storage/" . $l->foto) }}" class="img-responsive" style="height: 8rem; width: 16rem; object-fit:contain; padding: .30em; object-position: left;">
                     <div class="card-body">
                         <div class="nama">{{ $l->perusahaan->nama_perusahaan }}"; </div>
                         <div class="judul">{{ $l->judul }}</div>

@@ -1141,7 +1141,7 @@ if (window.jQuery)
             // STRING: collection lets you show messages in different languages
             STRING: {
                 remove: "x",
-                denied: "File Yang Anda Masukan $ext file.\nTolong Masukan File Dengan Format doc, docx, pdf, rtf, txt",
+                denied: "File Yang Anda Masukan $ext file.\n",
                 file: "$file",
                 selected: "File selected: $file",
                 duplicate: "File Dengan nama \n$file Sudah Anda Masukan",

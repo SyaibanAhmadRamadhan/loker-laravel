@@ -1,6 +1,21 @@
 @extends('layouts.main')
 
 @section('container')
+@if (session()->has("error_email"))
+<script>
+    alert("email sudah terdaftar")
+
+</script>
+@endif
+
+@if (session()->has("success"))
+<script>
+    alert("data berhasil diubah")
+
+</script>
+@endif
+
+
 <div class="container-fluid">
     <div class="row" style="justify-content: center !important; display: flex; margin-top: 2rem;">
         <div class="col">
@@ -86,7 +101,8 @@
                             <form class="lg-frm" action="{{ route('user.update',auth()->user()->id ) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
-                                <input type="text" name="foto_old" value="{{ auth()->user()->foto }}">
+                                <input type="hidden" name="foto_old" value="{{ auth()->user()->foto }}">
+                                <input type="hidden" name="email_old" value="{{ auth()->user()->email }}">
                                 <div class="form-group row has-success">
                                     <label for="username" class="col-lg-4 col-form-label">Username</label>
                                     <div class="col-lg-6">

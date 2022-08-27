@@ -164,7 +164,7 @@ class PerusahaanController extends Controller
         $perusahaan->tentang_perusahaan = $request->tentang_perusahaan;
         $perusahaan->no_telp = $request->no_telp;
         if($request->file("gambar")){
-            $perusahaan->dokumen = $request->file("gambar")->store("perusahaan");
+            $perusahaan->dokumen = $request->file("gambar")->store("perusahaan","public");
         }
         $perusahaan->status = "aktif";
         $perusahaan->save();
@@ -196,7 +196,7 @@ class PerusahaanController extends Controller
         $lowongan->id_kategori = $request->id_kategori;
         $lowongan->batas_waktu = date("Y-m-d ");
         if($request->file("gambar")){
-            $lowongan->foto = $request->file("gambar")->store("perusahaan");
+            $lowongan->foto = $request->file("gambar")->store("perusahaan", "public");
         }
         $lowongan->save();
         return redirect("/perusahaan/lowongan")->with("success", "Lowongan berhasil ditambahkan");
@@ -207,6 +207,7 @@ class PerusahaanController extends Controller
         if(!session()->has("login")){
             return redirect("/perusahaan/login");
         }
+        $lamaran = [];
         $lowongan = Lowongan::where("id_perusahaan", session("id"))->get();
         foreach($lowongan as $l){
             $checkLamaran = Lamaran::where("id_lowongan_kerja", $l->id)->where("status_lamaran", "Lamar")->first();

@@ -120,7 +120,7 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="active"><a href="index.php">Beranda</a></li>
+                        <li class="active"><a href="{{ url('/') }}">Beranda</a></li>
                         @auth
                         <li><a href="{{ url("/pusat-informasi") }}">Pusat Informasi</a></li>
                         <li><a href="{{ url('/lowongan-kerja') }}">Lowongan Kerja</a></li>

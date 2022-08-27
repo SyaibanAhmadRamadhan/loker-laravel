@@ -25,10 +25,10 @@ class LowonganSeeder extends Seeder
                 "tanggal_posting" => "2022-08-15",
                 "id_kategori" => 1,
                 "batas_waktu" => "2022-09-15",
-                "foto" => "262d1.PNG",
+                "foto" => "perusahaan/262d1.PNG",
             ],
             [
-                "id_perusahaan" => 1,
+                "id_perusahaan" => 2,
                 "judul"=> "IT Programmer",
                 "id_kota" => 1,
                 "lokasi" => "Jl. Raya Meruya Ilir, Jakarta Barat 11630 ",
@@ -36,7 +36,7 @@ class LowonganSeeder extends Seeder
                 "tanggal_posting" => "2022-08-15",
                 "id_kategori" => 3,
                 "batas_waktu" => "2022-09-15",
-                "foto" => "381d3.PNG",
+                "foto" => "perusahaan/381d3.PNG",
             ],
             [
                 "id_perusahaan" => 3,
@@ -47,7 +47,7 @@ class LowonganSeeder extends Seeder
                 "tanggal_posting" => "2022-08-15",
                 "id_kategori" => 1,
                 "batas_waktu" => "2022-09-15",
-                "foto" => "752d4.PNG",
+                "foto" => "perusahaan/752d4.PNG",
             ],
         ];
         DB::table("lowongan_kerja")->insert($lowongan);

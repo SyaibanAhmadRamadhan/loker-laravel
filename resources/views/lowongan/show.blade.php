@@ -104,7 +104,7 @@
                                                 <button class="btnUpload" style="cursor: pointer;">Upload a file</button>
 
                                                 {{-- <input type="file" name="myfile" /> --}}
-                                                <input class="multi custom-file-input" name='document[]' accept="doc|docx|pdf|.rtf|.txt" data-maxsize="5120" data-maxfile="2048" type="file" id="T7" />
+                                                <input class="multi custom-file-input" name='document[]' accept="jpg|jpeg|png" data-maxsize="5120" data-maxfile="2048" type="file" id="T7" />
 
 
                                             </div>
@@ -115,6 +115,7 @@
                                                 <br />
                                             </div>
                                             <p style="text-align: left">*max size 2MB / 2048KB</p>
+                                            <p style="text-align: left">*format file png, jpg, jpeg</p>
 
                                             <p style="clear:both; padding-top:30px">
                                                 <button type="submit" id="submit" class="btn btn-primary">Submit</button>

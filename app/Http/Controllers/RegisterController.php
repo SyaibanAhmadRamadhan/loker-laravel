@@ -98,12 +98,17 @@ class RegisterController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $checkEmail = User::where("email", $request->email)->get();
+        $checkEmail = User::where("email", $request->email)->get();
+        // dd($checkEmail->value('email'));
+        if($request->email){
+            if($checkEmail->value('email') != $request->email_old){
+            if(count($checkEmail) > 0){
+                return redirect('/user/profile')->with('error_email', "Email telah terdaftar");
+            };
+        }
+        }
 
-        // if(count($checkEmail) > 0){
-        //     return redirect('/')->with('error', "Email telah terdaftar");
-        // };
-        $user = User::where('id', $id)->update([
+             $user = User::where('id', $id)->update([
             'username' => $request->username,
             'email' => $request->email,
             'nama_lengkap' => $request->nama_lengkap,
@@ -158,6 +163,9 @@ class RegisterController extends Controller
         }
         // $user->update($data);
         return redirect('/user/profile')->with('success', 'data berhasil diubah');
+
+
+
     }
 
     /**

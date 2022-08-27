@@ -34,7 +34,7 @@
                     </thead>
                     <tfoot>
                         <tbody>
-                            @foreach ($lamaran as $l)
+                            @forelse ($lamaran as $l)
                             <tr>
                                 <td>{{ $l->id }}</td>
                                 <td>{{ $l->user->nama_lengkap }}</td>
@@ -95,8 +95,8 @@
                                 </div>
                             </div>
             </div>
-
-            @endforeach
+            @empty
+            @endforelse
 
             </tbody>
             </table>
