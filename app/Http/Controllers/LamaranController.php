@@ -56,7 +56,7 @@ class LamaranController extends Controller
         $lamaran->tgl_interview = "";
         // $array = [];
         $mkdir = date("Y-m-d H:i:s");
-        $storage = File::makeDirectory('storage/document/'.$mkdir);
+        $storage = Storage::makeDirectory('storage/document/'.$mkdir);
         // dd($request->file('document'));
         foreach ($request->file('document') as $x) {
             $originalname = $x->getClientOriginalName();
@@ -141,7 +141,7 @@ class LamaranController extends Controller
         $perusahaan = $lamaran->lowongan->perusahaan->nama_perusahaan;
         $lamaranDoc = $lamaran->document;
         $fileName = 'nama='.$user.', lowongan='.$lowongan.', perusahaan='.$perusahaan.', tanggal='.$lamaranDoc.'.zip';
-        File::deleteDirectory(storage_path('app/public/document/'.$lamaranDoc));
+        Storage::deleteDirectory('public/document/'.$lamaranDoc);
         Storage::delete('public/document/'.$fileName);
         $lamaran->delete();
         return redirect('/lamaran')->with('success', "Anda Batalkan melamar");
