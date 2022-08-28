@@ -75,7 +75,7 @@
                     <div class="text-center" role="group" aria-label="...">
                         <input type="button" data-toggle="modal" data-target="#lamar" class="btn btn-primary" name="simpan" value="Lamar Sekarang" id="lik">
 
-                        <input type="button" class="btn btn-primary" value="Back" onclick="location.href='lowongan-kerja">
+                        <input type="button" class="btn btn-primary" value="Back" onclick="window.location.href='/lowongan-kerja'">
                         <div class="modal fade" id="lamar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">

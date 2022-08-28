@@ -147,13 +147,10 @@ class PerusahaanController extends Controller
     }
 
     public function daftarPerusahaan(Request $request){
-        if(!auth()->check()){
-            return redirect("/admin/login");
-        }
         $checkPerusahaan = Perusahaan::where("email", $request->email)->first();
 
         if($checkPerusahaan){
-            return back()->with("error", "Login Failed");
+            return back()->with("error", "Email Sudah Terdaftar");
         }
 
         $perusahaan = new Perusahaan();
@@ -168,7 +165,7 @@ class PerusahaanController extends Controller
         }
         $perusahaan->status = "aktif";
         $perusahaan->save();
-        return redirect("/perusahaan/login")->with("success", "Perusahaan berhadil didaftarkan");
+        return redirect("perusahaan/login")->with("success", "Perusahaan berhadil didaftarkan");
     }
 
     public function lowongan(){
